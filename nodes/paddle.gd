@@ -12,6 +12,8 @@ var player: Player:
 
 		_player_changed(old_player, value)
 
+var ar_position: Vector2
+
 @onready var animatable_body_3d: AnimatableBody3D = %AnimatableBody3D
 
 @onready var camera_3d: Camera3D = %Camera3D

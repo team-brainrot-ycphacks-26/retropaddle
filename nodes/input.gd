@@ -1,9 +1,12 @@
 extends Node
 
 @onready var ar_view = $ARView
+@onready var player: Player = get_parent()
 const SERVER_ID: int = 1
 
 var ar_position: Vector2 = Vector2.ZERO
+
+var paddle: Paddle
 
 
 func _ready() -> void:
@@ -15,6 +18,14 @@ func _ready() -> void:
 	else:
 		ar_view.Backend.ARCORE
 
+	var battlefield_scene: Node3D = RootScene.instance.get_node("ContentScene").get_child(0)
+	paddle = battlefield_scene.get_node("Paddle1")
+
+	if not paddle:
+		paddle = battlefield_scene.get_node("Paddle2")
+
+	paddle.player = player
+
 
 func _physics_process(_delta: float) -> void:
 	if multiplayer.is_server():
@@ -23,13 +34,7 @@ func _physics_process(_delta: float) -> void:
 	if ar_view.applied_packet == null:
 		return
 
-	ar_position = Vector2(ar_view.applied_packet.camera_transform.origin)
-	_set_coordinates.rpc_id(SERVER_ID, ar_position)
 
-
-@rpc("any_peer", "call_remote", "unreliable")
+@rpc("any_peer", "unreliable")
 func _set_coordinates(position: Vector2) -> void:
-	if not multiplayer.is_server():
-		return
-
-	# DON'T FORGET TO FINISH
+	paddle.ar_position = position

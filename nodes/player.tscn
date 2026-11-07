@@ -10,8 +10,6 @@
 [node name="Player" type="Node" unique_id=1569561123]
 script = ExtResource("1_u63mc")
 
-[node name="ARView" parent="." unique_id=1008093009 instance=ExtResource("2_2wrp4")]
-
 [node name="Health" parent="." unique_id=7661095 instance=ExtResource("2_me0cc")]
 unique_name_in_owner = true
 health = 3
@@ -24,3 +22,5 @@ unique_name_in_owner = true
 
 [node name="Input" type="Node" parent="." unique_id=1163386557]
 script = ExtResource("6_46y3y")
+
+[node name="ARView" parent="Input" unique_id=1008093009 instance=ExtResource("2_2wrp4")]
