@@ -1,14 +1,7 @@
 [gd_scene format=3 uid="uid://16lil2blm7h7"]
 
+[ext_resource type="PackedScene" uid="uid://cads8xbmmbnom" path="res://nodes/battlefield.tscn" id="1_yftba"]
+
 [node name="LobbyScene" type="Node3D" unique_id=1144864260]
 
-[node name="Control" type="Control" parent="." unique_id=119580149]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 64.0
-offset_bottom = 53.0
-
-[node name="Button" type="Button" parent="Control" unique_id=211872160]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Battlefield" parent="." unique_id=1339524449 instance=ExtResource("1_yftba")]

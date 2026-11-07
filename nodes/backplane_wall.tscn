@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7t02ejkpjcja"]
+
+[ext_resource type="Script" uid="uid://c4ejdmknn08ae" path="res://nodes/backplane_wall.gd" id="1_80kpn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dkeh"]
+size = Vector3(2, 2, 0.03)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3yr8"]
+size = Vector3(2, 2, 0.03)
+
+[node name="BackplaneWall" type="Node3D" unique_id=560675470]
+script = ExtResource("1_80kpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=596451845]
+mesh = SubResource("BoxMesh_3dkeh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=719001572]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2036668991]
+shape = SubResource("BoxShape3D_b3yr8")

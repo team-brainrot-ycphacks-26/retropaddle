@@ -3,6 +3,8 @@ extends Node
 
 @onready var content_scene: Node = %ContentScene
 
+@onready var game_results_manager: GameResultsManager = %GameResultsManager
+
 @onready var lobby_manager: LobbyManager = %LobbyManager
 
 @onready var network_manager: NetworkManager = %NetworkManager
