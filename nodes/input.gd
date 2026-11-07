@@ -1,6 +1,7 @@
 extends Node
 
 @onready var ar_view = $ARView
+@onready var battlefield = $battlefield
 @onready var player: Player = get_parent()
 const SERVER_ID: int = 1
 
@@ -23,8 +24,10 @@ func _ready() -> void:
 
 	if not paddle:
 		paddle = battlefield_scene.get_node("Paddle2")
+		battlefield.get_node("Backplane2").player(player)
 
 	paddle.player = player
+	battlefield.get_node("Backplane1").player(player)
 
 
 func _physics_process(_delta: float) -> void:
