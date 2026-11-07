@@ -1,3 +1,4 @@
+class_name NetworkManager
 extends Node
 
 # CHANGE TO SERVER'S TAILSCALE IP BEFORE USE
@@ -8,7 +9,7 @@ const MAX_PLAYERS: int = 2
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func manager_ready() -> void:
 	var peer = ENetMultiplayerPeer.new()
 
 	# Connect client
@@ -35,9 +36,20 @@ func _ready() -> void:
 
 		# Creates signal for clients connecting
 		multiplayer.peer_connected.connect(_on_peer_connected)
+		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 		multiplayer.multiplayer_peer = peer
 
 
 func _on_peer_connected(id: int) -> void:
-	print("Client connected: ", id)
+	RootScene.instance.lobby_manager.add_player(id)
+	print("Player client id '%s' id")
+
+
+func _on_peer_disconnected(id: int) -> void:
+	if not RootScene.instance.lobby_manager.has_player(id):
+		print("Non-player client id %s disconnected" % id)
+		return
+
+	RootScene.instance.lobby_manager.remove_player(id)
+	print("Player client id '%s' connected" % id)

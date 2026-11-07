@@ -1,7 +1,21 @@
 [gd_scene format=3 uid="uid://by2d0a3re60hm"]
 
 [ext_resource type="PackedScene" uid="uid://bebnnfqhcd4c5" path="res://nodes/game_manager.tscn" id="1_uok7p"]
+[ext_resource type="PackedScene" uid="uid://churypx3uhfns" path="res://nodes/barrier_walls.tscn" id="2_hmp32"]
+[ext_resource type="PackedScene" uid="uid://dngasovthuntg" path="res://nodes/ball.tscn" id="3_x1h1f"]
+[ext_resource type="PackedScene" uid="uid://c4qgf3rrtvfpe" path="res://nodes/paddle.tscn" id="4_2mjp7"]
 
 [node name="BattlefieldScene" type="Node3D" unique_id=1395957463]
 
 [node name="GameManager" parent="." unique_id=2053409803 instance=ExtResource("1_uok7p")]
+
+[node name="BarrierWalls" parent="." unique_id=1701708914 instance=ExtResource("2_hmp32")]
+
+[node name="Ball" parent="." unique_id=1192235307 instance=ExtResource("3_x1h1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9674157, 0)
+
+[node name="Paddle1" parent="." unique_id=9845050 instance=ExtResource("4_2mjp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+
+[node name="Paddle2" parent="." unique_id=1872046719 instance=ExtResource("4_2mjp7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 2)

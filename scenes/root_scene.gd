@@ -3,11 +3,19 @@ extends Node
 
 @onready var content_scene: Node = %ContentScene
 
+@onready var lobby_manager: LobbyManager = %LobbyManager
+
+@onready var network_manager: NetworkManager = %NetworkManager
+
 static var instance: RootScene:
 	get:
 		var scene_tree = Engine.get_main_loop() as SceneTree
 
 		return scene_tree.current_scene
+
+
+func _ready() -> void:
+	network_manager.manager_ready()
 
 
 func transition_to(scene_path: String) -> void:
