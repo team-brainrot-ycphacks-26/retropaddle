@@ -28,6 +28,7 @@ func add_player(id: int) -> Player:
 	add_child(player)
 	player_added.emit(player)
 
+	var x = players
 	return player
 
 

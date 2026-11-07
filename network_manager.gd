@@ -19,6 +19,8 @@ func _ready() -> void:
 			push_error("Client failed to start " + error_string(result))
 			return
 
+		RootScene.instance.transition_to("res://scenes/battlefield_scene.tscn")
+
 		multiplayer.multiplayer_peer = peer
 
 	# Start server
@@ -31,7 +33,9 @@ func _ready() -> void:
 			push_error("Server failed to start " + error_string(result))
 			return
 
-		RootScene.instance.transition_to("res://scenes/lobby_scene.tscn")
+			RootScene.instance.transition_to("res://scenes/battlefield_scene.tscn")
+
+		#RootScene.instance.transition_to("res://scenes/lobby_scene.tscn")
 
 		# Creates signal for clients connecting
 		multiplayer.peer_connected.connect(_on_peer_connected)
