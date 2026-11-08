@@ -2,6 +2,8 @@
 class_name BackplaneWall
 extends Node3D
 
+signal ball_hit(wall: BackplaneWall)
+
 @export var target_node: Node3D
 
 @onready var mesh_instance_3d: MeshInstance3D = %MeshInstance3D
@@ -44,3 +46,15 @@ func _process(_delta: float) -> void:
 	)
 
 	shader_material.set_shader_parameter("mask_origin", closest_point)
+
+
+func _on_collision_area_body_entered(body: Node3D) -> void:
+	if not multiplayer.is_server():
+		return
+
+	# Filter for ball (can change for more specific condition when ball is created)
+	if body is not RigidBody3D:
+		return
+
+	print("Ball hit: ", name)
+	ball_hit.emit(self)
