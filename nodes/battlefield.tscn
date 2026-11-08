@@ -31,6 +31,3 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0
 [node name="BackplaneWall2" parent="." unique_id=2055554970 node_paths=PackedStringArray("target_node") instance=ExtResource("1_2qtdm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.015)
 target_node = NodePath("../Paddle2")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1916536927]
-transform = Transform3D(-0.2568648, 0, 0.9664474, 0, 1, 0, -0.9664474, 0, -0.2568648, 2.1062217, 0.30114937, -0.3226496)
